@@ -485,7 +485,17 @@ function getIdentityMatrix(n) {
  *     3, 3   => [ 3 ]
  */
 function getIntervalArray(start, end) {
-   throw new Error('Not implemented');
+   var length = end - start + 1;
+
+   var i = start;
+
+   var arr = new Array(length).fill(0);
+
+   return arr.map((value, index) => {
+      arr[index] = i;
+      i++;
+      return arr[index];
+   });
 }
 
 /**
@@ -500,7 +510,12 @@ function getIntervalArray(start, end) {
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
 function distinct(arr) {
-   throw new Error('Not implemented');
+   var result = [];
+    arr.filter(function(value){
+        result.join('').search(value) == '-1' ? result.push(value) : result.push();
+        return true;
+    });
+    return result;
 }
 
 /**
@@ -612,7 +627,26 @@ function getElementByIndexes(arr, indexes) {
  * 
  */
 function swapHeadAndTail(arr) {
-    throw new Error('Not implemented');
+   if (arr.length == 1) {
+      return arr;
+  }
+
+  var middleIndex = Math.floor(arr.length / 2);
+
+  if (arr.length % 2 == 0) {
+      var start = arr.slice(0, middleIndex);
+      var finish = arr.slice(middleIndex, arr.length);
+
+      return finish.concat(start);
+  } else {
+      var start = arr.slice(0, middleIndex);
+      var middle = [];
+      middle.push(arr[middleIndex]);
+      var finish = arr.slice(-middleIndex);
+
+      return finish.concat(middle).concat(start);
+  }
+
 }
 
 
