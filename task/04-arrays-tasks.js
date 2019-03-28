@@ -314,9 +314,17 @@ function get3TopItems(arr) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) {
-   return arr.filter(function(value){
-      return value > 0;
-   }).length;
+   var max = 0;
+
+   var newarr = []
+   arr.map(el => {
+      if(typeof el == "number")newarr.push(el)
+   }
+   );
+
+   newarr.filter(val => val > max ? max = val : max);
+
+   return max;
 }
  
 /** 
