@@ -33,7 +33,19 @@
  *
  */
 function* get99BottlesOfBeer() {
-    throw new Error('Not implemented');
+
+    for(var i = 99; i > 0; i--) {
+        yield i == 1
+            ? i + ' bottle of beer on the wall, ' + i + ' bottle of beer.'
+            : i + ' bottles of beer on the wall, ' + i + ' bottles of beer.';
+        yield (i - 1) == 1
+            ? 'Take one down and pass it around, ' + (i-1) + ' bottle of beer on the wall.'
+            : (i - 1) > 0
+                ? 'Take one down and pass it around, ' + (i-1) + ' bottles of beer on the wall.'
+                : 'Take one down and pass it around, no more bottles of beer on the wall.';
+    }
+    yield 'No more bottles of beer on the wall, no more bottles of beer.';
+    yield 'Go to the store and buy some more, 99 bottles of beer on the wall.';
 }
 
 
@@ -47,7 +59,15 @@ function* get99BottlesOfBeer() {
  *
  */
 function* getFibonacciSequence() {
-    throw new Error('Not implemented');
+    let prevprev  = -1;
+    let prev = 1;
+    let res;
+    for(var i = 0; i < Infinity; ++i){
+        res = prevprev + prev;
+        prevprev = prev;
+        prev = res;
+        yield res;
+    }
 }
 
 
@@ -82,7 +102,20 @@ function* getFibonacciSequence() {
  *
  */
 function* depthTraversalTree(root) {
-    throw new Error('Not implemented');
+    var stack = [];
+    stack.push(root);
+    while(stack.length != 0)
+    {
+        root = stack.pop();
+        yield root;
+        if(root.children)
+        {
+            for(var i = root.children.length; i > 0; i--)
+            {
+                stack.push(root.children[i-1]);
+            }
+        }
+    }
 }
 
 

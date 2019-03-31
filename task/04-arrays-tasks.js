@@ -294,9 +294,15 @@ function propagateItemsByPositionIndex(arr) {
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
 function get3TopItems(arr) {
-   var myArr = arr.filter((value, index) => index > arr.length - 4);
+   arr = arr.sort(function(a, b) {
+      return b - a;
+    });
 
-   return myArr.reverse();
+    if (arr.length>3){
+      arr = arr.slice(0,3);
+   }
+   
+  return arr;
 }
  
  
