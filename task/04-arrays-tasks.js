@@ -563,19 +563,7 @@ function distinct(arr) {
  *   }
  */
 function group(array, keySelector, valueSelector) {
-   var map = new Map();
-    array.map(function(value) {
-       var selectedValues = array.reduce(function(result, select) {
-           return keySelector(value) == keySelector(select)
-               ? result.concat(valueSelector(select))
-               : result;
-       }
-       , new Array()
-       );
-
-       map.set(keySelector(value), selectedValues);
-    });
-   return map;
+   throw new Error('Not implemented.');
 }
 
 
